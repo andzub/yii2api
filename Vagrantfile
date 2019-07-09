@@ -7,7 +7,7 @@ required_plugins.each do |plugin|
 end
 
 domains = {
-  yii2api: 'yii2api.loc'
+  app: 'yii2api.loc'
 }
 
 vagrantfile_dir_path = File.dirname(__FILE__)
@@ -23,10 +23,10 @@ FileUtils.cp config[:example], config[:local] unless File.exist?(config[:local])
 options = YAML.load_file config[:local]
 
 # check github token
-if options['github_token'].nil? || options['github_token'].to_s.length != 40
-  puts "You must place REAL GitHub token into configuration:\n/yii2api/vagrant/config/vagrant-local.yml"
-  exit
-end
+#if options['github_token'].nil? || options['github_token'].to_s.length != 40
+  #puts "You must place REAL GitHub token into configuration:\n/yii2api/vagrant/config/vagrant-local.yml"
+  #exit
+#end
 
 # vagrant configurate
 Vagrant.configure(2) do |config|
@@ -42,7 +42,7 @@ Vagrant.configure(2) do |config|
     # machine memory size
     vb.memory = options['memory']
     # machine name (for VirtualBox UI)
-    vb.name = options['machine_name']
+    vb.name = 'yii2api'
   end
 
   # machine name (for vagrant console)
